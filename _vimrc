@@ -201,7 +201,6 @@
     nmap <F4> :nohlsearch<CR>                               " F4取消高亮
 
 " < 快捷键设置 >
-    
     " Ctrl + K 插入模式下光标向上移动
     imap <c-k> <Up>
     
@@ -226,7 +225,7 @@
     " set guifont=YaHei_Consolas_Hybrid:h10                 "设置字体:字号（字体名称空格用下划线代替）
     set nowrap                                              "设置不自动换行
     set shortmess=atI                                       "去掉欢迎界面
-    " au GUIEnter * simalt ~x                               "窗口启动时自动最大化
+    "au GUIEnter * simalt ~x                                "窗口启动时自动最大化
     winpos 100 10                                           "指定窗口出现的位置，坐标原点在屏幕左上角
     set lines=38 columns=120                                "指定窗口大小，lines为高度，columns为宽度
     
@@ -263,7 +262,6 @@
     endif
     
 "  < 编译、连接、运行配置 >
-
     " F9 一键保存、编译、连接存并运行
     map <F9> :call Run()<CR>
     imap <F9> <ESC>:call Run()<CR>
@@ -437,15 +435,12 @@
     endfunc
     
 "  < 其它配置 >
-
     set writebackup                                         "保存文件前建立备份，保存成功后删除该备份
     set nobackup                                            "设置无备份文件
     " set noswapfile                                        "设置无临时文件
-    set vb t_vb=                                            "关闭提示音
-    
+    "set vb t_vb=                                           "关闭提示音,开启后会闪屏
     
 "   << 以下为常用插件配置 >>
-    
     " -----------------------------------------------------------------------------
     "  < a.vim 插件配置 >
     " -----------------------------------------------------------------------------
@@ -677,7 +672,6 @@
     " 快捷键 <c-w>o 在最大化与还原间切换
     
 " << 以下为常用工具配置 >>
-    
     " -----------------------------------------------------------------------------
     "  < cscope 工具配置 >
     " -----------------------------------------------------------------------------
@@ -723,44 +717,10 @@
         map <F11> <Esc>:call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)<CR>
     endif
     
-"  < vimtweak 工具配置 > 请确保以已装了工具
 
     " 这里只用于窗口透明与置顶
-    " 常规模式下 Shift + k 减小透明度，Shift + j 增加透明度，<Leader>t 窗口置顶与否切换
-    if (g:iswindows && g:isGUI)
-        let g:Current_Alpha = 255
-        let g:Top_Most = 0
-        func! Alpha_add()
-            let g:Current_Alpha = g:Current_Alpha + 10
-            if g:Current_Alpha > 255
-                let g:Current_Alpha = 255
-            endif
-            call libcallnr("vimtweak.dll","SetAlpha",g:Current_Alpha)
-        endfunc
-        func! Alpha_sub()
-            let g:Current_Alpha = g:Current_Alpha - 10
-            if g:Current_Alpha < 155
-                let g:Current_Alpha = 155
-            endif
-            call libcallnr("vimtweak.dll","SetAlpha",g:Current_Alpha)
-        endfunc
-        func! Top_window()
-            if  g:Top_Most == 0
-                call libcallnr("vimtweak.dll","EnableTopMost",1)
-                let g:Top_Most = 1
-            else
-                call libcallnr("vimtweak.dll","EnableTopMost",0)
-                let g:Top_Most = 0
-            endif
-        endfunc
-        "快捷键设置
-        map <s-k> :call Alpha_add()<cr>
-        map <s-j> :call Alpha_sub()<cr>
-        map <leader>t :call Top_window()<cr>
-    endif
-    
+
 " << 以下为常用自动命令配置 >>
-    
     " 自动切换目录为当前编辑文件所在目录
     au BufRead,BufNewFile,BufEnter * cd %:p:h
     
