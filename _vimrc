@@ -146,7 +146,10 @@
     Bundle 'Markdown'
     Bundle 'Markdown-syntax'
     Bundle 'Solarized'
-    		" 养眼主题
+            " 养眼主题
+    Bundle 'yueyoum/vim-linemovement'
+	        " 可以上下移动行
+    		
     
 "  < 编码配置 >
     " 注：使用utf-8格式后，软件与程序源码、文件路径不能有中文，否则报错
